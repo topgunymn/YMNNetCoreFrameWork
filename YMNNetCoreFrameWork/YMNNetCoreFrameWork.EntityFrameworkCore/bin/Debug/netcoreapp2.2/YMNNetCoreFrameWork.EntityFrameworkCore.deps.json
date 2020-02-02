@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.2",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.2": {
+      "YMNNetCoreFrameWork.EntityFrameworkCore/1.0.0": {
+        "dependencies": {
+          "YMNNetCoreFrameWork.Core": "1.0.0"
+        },
+        "runtime": {
+          "YMNNetCoreFrameWork.EntityFrameworkCore.dll": {}
+        }
+      },
+      "YMNNetCoreFrameWork.Core/1.0.0": {
+        "runtime": {
+          "YMNNetCoreFrameWork.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "YMNNetCoreFrameWork.EntityFrameworkCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "YMNNetCoreFrameWork.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

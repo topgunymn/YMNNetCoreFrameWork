@@ -1,0 +1,14 @@
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Application.deps.json
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Application.dll
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Application.pdb
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.dll
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.dll
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.pdb
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.pdb
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Application.csprojAssemblyReference.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Application.csproj.CoreCompileInputs.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Application.AssemblyInfoInputs.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Application.AssemblyInfo.cs
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Application.csproj.CopyComplete
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Application.dll
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Application\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Application.pdb

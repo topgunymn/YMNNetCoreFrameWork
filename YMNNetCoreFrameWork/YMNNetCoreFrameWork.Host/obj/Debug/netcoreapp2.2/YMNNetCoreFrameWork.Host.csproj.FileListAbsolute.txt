@@ -1,0 +1,14 @@
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.deps.json
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.runtimeconfig.json
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.runtimeconfig.dev.json
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.dll
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.pdb
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.csprojAssemblyReference.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.csproj.CoreCompileInputs.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.RazorAssemblyInfo.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.RazorAssemblyInfo.cs
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.AssemblyInfoInputs.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.AssemblyInfo.cs
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.RazorTargetAssemblyInfo.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.dll
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Host\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Host.pdb

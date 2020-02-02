@@ -1,0 +1,9 @@
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Core\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.deps.json
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Core\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.dll
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Core\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.pdb
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Core\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.csprojAssemblyReference.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Core\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.csproj.CoreCompileInputs.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Core\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.AssemblyInfoInputs.cache
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Core\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.AssemblyInfo.cs
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Core\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.dll
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Core\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.pdb
