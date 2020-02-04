@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YMNNetCoreFrameWork.Host", "YMNNetCoreFrameWork.Host\YMNNetCoreFrameWork.Host.csproj", "{A805FB9F-7069-411B-B926-96FAF4F10CCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YMNNetCoreFrameWork.Host", "YMNNetCoreFrameWork.Host\YMNNetCoreFrameWork.Host.csproj", "{A805FB9F-7069-411B-B926-96FAF4F10CCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YMNNetCoreFrameWork.Application", "YMNNetCoreFrameWork.Application\YMNNetCoreFrameWork.Application.csproj", "{0316A395-1E4C-48BC-BA62-85387567CC40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YMNNetCoreFrameWork.Core", "YMNNetCoreFrameWork.Core\YMNNetCoreFrameWork.Core.csproj", "{A80AD34A-3F03-4F1D-81D4-6CBDD461D045}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YMNNetCoreFrameWork.Core", "YMNNetCoreFrameWork.Core\YMNNetCoreFrameWork.Core.csproj", "{A80AD34A-3F03-4F1D-81D4-6CBDD461D045}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YMNNetCoreFrameWork.EntityFrameworkCore", "YMNNetCoreFrameWork.EntityFrameworkCore\YMNNetCoreFrameWork.EntityFrameworkCore.csproj", "{591F7BDC-AAD3-4398-AFAD-05925FB9B028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YMNNetCoreFrameWork.EntityFrameworkCore", "YMNNetCoreFrameWork.EntityFrameworkCore\YMNNetCoreFrameWork.EntityFrameworkCore.csproj", "{591F7BDC-AAD3-4398-AFAD-05925FB9B028}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YMNNetCoreFrameWork.Migration", "YMNNetCoreFrameWork.Migration\YMNNetCoreFrameWork.Migration.csproj", "{B9465DDA-E0F7-4F6E-A9B4-CBAEEEDA7BC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YMNNetCoreFrameWork.Migration", "YMNNetCoreFrameWork.Migration\YMNNetCoreFrameWork.Migration.csproj", "{B9465DDA-E0F7-4F6E-A9B4-CBAEEEDA7BC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{A805FB9F-7069-411B-B926-96FAF4F10CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A805FB9F-7069-411B-B926-96FAF4F10CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A805FB9F-7069-411B-B926-96FAF4F10CCB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0316A395-1E4C-48BC-BA62-85387567CC40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0316A395-1E4C-48BC-BA62-85387567CC40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0316A395-1E4C-48BC-BA62-85387567CC40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0316A395-1E4C-48BC-BA62-85387567CC40}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A80AD34A-3F03-4F1D-81D4-6CBDD461D045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A80AD34A-3F03-4F1D-81D4-6CBDD461D045}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A80AD34A-3F03-4F1D-81D4-6CBDD461D045}.Release|Any CPU.ActiveCfg = Release|Any CPU

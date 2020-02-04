@@ -1,8 +1,12 @@
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.deps.json
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.runtimeconfig.json
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.runtimeconfig.dev.json
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.dll
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.pdb
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.dll
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.dll
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Core.pdb
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Identity.Stores.xml
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.csprojAssemblyReference.cache
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.csproj.CoreCompileInputs.cache
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.AssemblyInfoInputs.cache
