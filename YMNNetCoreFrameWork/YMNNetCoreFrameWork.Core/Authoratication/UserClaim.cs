@@ -10,6 +10,8 @@ namespace YMNNetCoreFrameWork.Core.Authoratication
     [Table("UserClaims")]
    public  class UserClaim:IdentityUserClaim<int>
     {
+        [Key]
+        public long Id { get; set; }
         public DateTime? CreateTime { get; set; }
 
         [MaxLength(255)]

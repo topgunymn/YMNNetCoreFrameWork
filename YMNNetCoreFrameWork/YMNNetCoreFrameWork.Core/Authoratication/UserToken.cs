@@ -10,7 +10,8 @@ namespace YMNNetCoreFrameWork.Core.Authoratication
     [Table("UserTokens")]
    public    class UserToken:IdentityUserToken<int>
     {
-
+        [Key]
+        public long Id { get; set; }
 
         public DateTime? DeletionTime { get; set; }
 

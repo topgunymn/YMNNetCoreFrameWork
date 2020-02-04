@@ -11,6 +11,10 @@ namespace YMNNetCoreFrameWork.Core.Authoratication
     [Table("UserLogins")]
    public  class UserLogin:IdentityUserLogin<int>
     {
+
+        [Key]
+        public long Id { get; set; }
+
         public int TenantId { get; set; }
 
         public DateTime? CreateTime { get; set; }

@@ -11,7 +11,8 @@ namespace YMNNetCoreFrameWork.Core.Authoratication
     [Table("UserRoles")]
    public  class UserRole:IdentityUserRole<int>
     {
-
+        [Key]
+        public long Id { get; set; }
 
         public bool IsDelete { get; set; }
 
