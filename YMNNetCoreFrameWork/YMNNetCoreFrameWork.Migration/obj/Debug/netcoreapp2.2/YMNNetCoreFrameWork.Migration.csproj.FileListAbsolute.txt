@@ -6,3 +6,4 @@ C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWo
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Migration\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Migration.AssemblyInfo.cs
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Migration\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Migration.dll
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Migration\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Migration.pdb
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.Migration\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.Migration.csprojAssemblyReference.cache

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using YMNNetCoreFrameWork.Core.Authoratication;
+using YMNNetCoreFrameWork.Host.Middles;
 
 namespace YMNNetCoreFrameWork.Host.Controllers.Authentication
 {
@@ -28,11 +29,13 @@ namespace YMNNetCoreFrameWork.Host.Controllers.Authentication
         private readonly IConfigurationRoot _appConfiguration;
 
         private readonly IConfiguration _configuration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AuthenticationController(UserManager<YMNUser>  userManager,SignInManager<YMNUser> signInManager,IConfiguration configuration) {
+        public AuthenticationController(UserManager<YMNUser>  userManager,SignInManager<YMNUser> signInManager,IConfiguration configuration,IHttpContextAccessor httpContextAccessor) {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._configuration = configuration;
+            this._httpContextAccessor = httpContextAccessor;
         }
 
         [HttpGet]
@@ -50,13 +53,25 @@ namespace YMNNetCoreFrameWork.Host.Controllers.Authentication
         }
         [HttpPost("Login")]
         public async Task<object> Login(string name, string password) {
-
+            YMNSession.Configure(_httpContextAccessor);
             var user = await _userManager.FindByNameAsync(name);
             var result = await _signInManager.PasswordSignInAsync(user, password, false,false);
-            List<Claim> claims = new List<Claim>() {
-                 new Claim("userName",name)
-            };
+            //List<Claim> claims = new List<Claim>() {
+            //     new Claim("userName",name)
+            //};
+
+            //这里可以随意加入自定义的参数，key可以自己随便起
+            var claims = new[]
+            {
+                    new Claim(JwtRegisteredClaimNames.Nbf,$"{new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds()}") ,
+                    new Claim (JwtRegisteredClaimNames.Exp,$"{new DateTimeOffset(DateTime.Now.AddMinutes(30)).ToUnixTimeSeconds()}"),
+                    new Claim(ClaimTypes.NameIdentifier, name)               
+             };
             var token =  CreateAccessToken(claims);
+
+            YMNSession.UserId = user.Id;
+            YMNSession.UserName = user.UserName;
+            YMNSession.TenantId = user.TenantId;
             return token;
         }
 
@@ -68,12 +83,12 @@ namespace YMNNetCoreFrameWork.Host.Controllers.Authentication
 
         [HttpGet]
         [Route("Get2")]
-        [Authorize]
+        [Authorize("YMNPolicy")]
         public ActionResult<IEnumerable<string>> Get2()
         {
             //这是获取自定义参数的方法
          
-            return new string[] { "这个接口登陆过的用户都可以访问", $"userName={555}" };
+            return new string[] { "只有授权的用户才能访问该接口", $"userName={YMNSession.UserName}" };
         }
 
         /*

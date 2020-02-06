@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,6 +19,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using YMNNetCoreFrameWork.Core.Authoratication;
 using YMNNetCoreFrameWork.EntityFrameworkCore;
+using YMNNetCoreFrameWork.Host.Auths;
 using YMNNetCoreFrameWork.Host.Middles;
 
 namespace YMNNetCoreFrameWork.Host
@@ -46,7 +48,11 @@ namespace YMNNetCoreFrameWork.Host
             // //添加jwt验证：
             // .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
             // {
-            services.AddAuthentication(options =>
+            //添加授权策略
+            services.AddAuthorization(options=> {
+                options.AddPolicy("YMNPolicy", policy => policy.Requirements.Add(new YMNPolicy()));
+            })              
+           .AddAuthentication(options =>
             {
                      //identity.application
                      var a = options.DefaultAuthenticateScheme;
@@ -122,33 +128,38 @@ namespace YMNNetCoreFrameWork.Host
             //    //    }
             //    //};
             //});
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+         
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
 
+            //注入授权Handler
+            services.AddSingleton<IAuthorizationHandler, PolicyHandler>();
 
             services.AddDbContext<YMNContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("YMNContextString")));
-            
-
+            services.AddSession();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            //异常处理
+            app.UseMyExceptionHandler(loggerFactory);
             app.UseAuthentication();
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
+            //else
+            //{
+            //    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            //    app.UseHsts();
+            //}
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -159,7 +170,7 @@ namespace YMNNetCoreFrameWork.Host
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-
+            app.UseSession();
             //app.UseHttpsRedirection();
             app.UseMvc();
         }

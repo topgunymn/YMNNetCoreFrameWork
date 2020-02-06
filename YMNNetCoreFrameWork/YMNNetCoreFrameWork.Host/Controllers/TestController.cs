@@ -26,5 +26,14 @@ namespace YMNNetCoreFrameWork.Host.Controllers
         {
             return true;
         }
+
+        /// <summary>
+        /// 测试异常处理总线
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("TestException")]
+        public async Task<object> TestException() {
+            throw new Exception("测试异常处理总线");
+        }
     }
 }
