@@ -8,7 +8,7 @@ using System.Text;
 namespace YMNNetCoreFrameWork.Core.Authoratication
 {
     [Table("UserClaims")]
-   public  class UserClaim:IdentityUserClaim<int>
+   public  class UserClaim:IdentityUserClaim<string>
     {
         [Key]
         public long Id { get; set; }

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace YMNNetCoreFrameWork.Host.Controllers
+namespace YMNNetCoreFrameWork.YMNHost.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,6 +18,22 @@ namespace YMNNetCoreFrameWork.Host.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        // GET api/values
+        [HttpGet("Get1")]
+        public ActionResult<IEnumerable<string>> Get1()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET api/values
+
+
+        [Authorize]
+        [HttpGet("Get2")]
+        public ActionResult<IEnumerable<string>> Get2()
+        {
+            return new string[] { "Get2", "Get2" };
+        }
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)

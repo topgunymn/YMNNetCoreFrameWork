@@ -14,3 +14,5 @@ C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWo
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.csproj.CopyComplete
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.dll
 C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\obj\Debug\netcoreapp2.2\YMNNetCoreFrameWork.EntityFrameworkCore.pdb
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\学习资料\GitHub\YMNNetCoreFrameWork\YMNNetCoreFrameWork\YMNNetCoreFrameWork.EntityFrameworkCore\bin\Debug\netcoreapp2.2\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml

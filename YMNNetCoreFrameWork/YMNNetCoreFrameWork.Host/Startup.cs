@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using YMNNetCoreFrameWork.Core.Authoratication;
 using YMNNetCoreFrameWork.EntityFrameworkCore;
+using YMNNetCoreFrameWork.Host.Middles;
 
 namespace YMNNetCoreFrameWork.Host
 {
@@ -28,6 +34,94 @@ namespace YMNNetCoreFrameWork.Host
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var key = Configuration["Authentication:JwtBearer:SecurityKey"];
+            var Issuer = Configuration["Authentication:JwtBearer:Issuer"];
+            var Audience = Configuration["Authentication:JwtBearer:Audience"];
+
+
+            services.AddIdentity<YMNUser, Role>()
+  .AddEntityFrameworkStores<YMNContext>() ;
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            // //添加jwt验证：
+            // .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+            // {
+            services.AddAuthentication(options =>
+            {
+                     //identity.application
+                     var a = options.DefaultAuthenticateScheme;
+                var b = options.DefaultChallengeScheme;
+                options.DefaultAuthenticateScheme = "JwtBearer";
+                options.DefaultChallengeScheme = "JwtBearer";
+            }).AddJwtBearer("JwtBearer", options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateLifetime = true,//是否验证失效时间
+                    ClockSkew = TimeSpan.FromSeconds(30),
+
+                    ValidateAudience = true,//是否验证Audience
+                                            //ValidAudience = Const.GetValidudience(),//Audience
+                                            //这里采用动态验证的方式，在重新登陆时，刷新token，旧token就强制失效了
+                    AudienceValidator = (m, n, z) =>
+                  {
+                      return m != null && m.FirstOrDefault().Equals(Audience);
+                  },
+                    ValidateIssuer = true,//是否验证Issuer
+                    ValidIssuer = Issuer,//Issuer，这两项和前面签发jwt的设置一致
+
+                    ValidateIssuerSigningKey = true,//是否验证SecurityKey
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))//拿到SecurityKey
+                };
+                //options.Events = new JwtBearerEvents
+                //{
+                //    OnAuthenticationFailed = context =>
+                //    {
+                //        //Token expired
+                //        if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                //        {
+                //            context.Response.Headers.Add("Token-Expired", "true");
+                //        }
+                //        return Task.CompletedTask;
+                //    }
+                //};
+            });
+            //services.AddAuthentication(options => {
+            //    options.DefaultAuthenticateScheme = "JwtBearer";
+            //    options.DefaultChallengeScheme = "JwtBearer";
+            //}).AddJwtBearer("JwtBearer", options =>
+            //{
+            //    options.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateLifetime = true,//是否验证失效时间
+            //        ClockSkew = TimeSpan.FromSeconds(30),
+
+            //        ValidateAudience = true,//是否验证Audience
+            //                                //ValidAudience = Const.GetValidudience(),//Audience
+            //                                //这里采用动态验证的方式，在重新登陆时，刷新token，旧token就强制失效了
+            //        AudienceValidator = (m, n, z) =>
+            //        {
+            //            return m != null && m.FirstOrDefault().Equals(Const.ValidAudience);
+            //        },
+            //        ValidateIssuer = true,//是否验证Issuer
+            //        ValidIssuer = Const.Domain,//Issuer，这两项和前面签发jwt的设置一致
+
+            //        ValidateIssuerSigningKey = true,//是否验证SecurityKey
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Const.SecurityKey))//拿到SecurityKey
+            //    };
+            //    //options.Events = new JwtBearerEvents
+            //    //{
+            //    //    OnAuthenticationFailed = context =>
+            //    //    {
+            //    //        //Token expired
+            //    //        if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+            //    //        {
+            //    //            context.Response.Headers.Add("Token-Expired", "true");
+            //    //        }
+            //    //        return Task.CompletedTask;
+            //    //    }
+            //    //};
+            //});
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -38,11 +132,14 @@ namespace YMNNetCoreFrameWork.Host
 
             services.AddDbContext<YMNContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("YMNContextString")));
+            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseAuthentication();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -52,6 +149,7 @@ namespace YMNNetCoreFrameWork.Host
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -62,8 +160,32 @@ namespace YMNNetCoreFrameWork.Host
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
+        }
+
+
+        /* This method is needed to authorize SignalR javascript client.
+ * SignalR can not send authorization header. So, we are getting it from query string as an encrypted text. */
+        private static Task QueryStringTokenResolver(MessageReceivedContext context)
+        {
+            if (!context.HttpContext.Request.Path.HasValue ||
+                !context.HttpContext.Request.Path.Value.StartsWith("/signalr"))
+            {
+                // We are just looking for signalr clients
+                return Task.CompletedTask;
+            }
+
+            var qsAuthToken = context.HttpContext.Request.Query["enc_auth_token"].FirstOrDefault();
+            if (qsAuthToken == null)
+            {
+                // Cookie value does not matches to querystring value
+                return Task.CompletedTask;
+            }
+
+            // Set auth token from cookie
+            // context.Token = SimpleStringCipher.Instance.Decrypt(qsAuthToken, AppConsts.DefaultPassPhrase);
+            return Task.CompletedTask;
         }
     }
 }
