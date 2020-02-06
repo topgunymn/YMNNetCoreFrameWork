@@ -23,10 +23,10 @@ namespace YMNNetCoreFrameWork.Host.Middles
                     if (ex != null)
                     {
                         //记录日志
-                        var logger = loggerFactory.CreateLogger("BlogDemo.Api.Extensions.ExceptionHandlingExtensions");
+                        var logger = loggerFactory.CreateLogger("YmnFrmaworkExceptionHandler");
                         logger.LogDebug(500, ex.Error, ex.Error.Message);
                     }
-                    await context.Response.WriteAsync(ex?.Error?.Message ?? "an error occure");
+                    await context.Response.WriteAsync(ex?.Error?.Message ?? "错误了");
                 });
             });
         }
