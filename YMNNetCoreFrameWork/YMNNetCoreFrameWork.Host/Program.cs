@@ -19,6 +19,7 @@ namespace YMNNetCoreFrameWork.Host
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            //.ConfigureLogging(logging => logging.SetMinimumLevel(LogLevel.Warning))
                 .UseStartup<Startup>();
     }
 }

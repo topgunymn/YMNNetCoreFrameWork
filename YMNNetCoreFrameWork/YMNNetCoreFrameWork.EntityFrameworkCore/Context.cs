@@ -8,7 +8,7 @@ using YMNNetCoreFrameWork.Core.Authoratication;
 
 namespace YMNNetCoreFrameWork.EntityFrameworkCore
 {
-   public   class YMNContext: IdentityDbContext<YMNUser, Role, string>
+   public   class YMNContext: IdentityDbContext<YMNUser, Role, long>
     {
         public YMNContext(DbContextOptions<YMNContext> options)
             : base(options) {
@@ -32,6 +32,8 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore
         //public DbSet<UserToken> UserTokens  { get; set; }
 
         //public DbSet<> IdentityUserClaims { get; set; }
+
+        public DbSet<YMNPermissions> YMNPermissions { get; set; }
 
         #endregion
     }

@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YMNNetCoreFrameWork.Host</name>
+    </assembly>
+    <members>
+        <member name="T:YMNNetCoreFrameWork.Host.Auths.YMNPolicy">
+            <summary>
+            权限策略实体
+            </summary>
+        </member>
+        <member name="P:YMNNetCoreFrameWork.Host.Auths.YMNPolicy.UserPermissions">
+            <summary>
+            用户权限集合
+            </summary>
+        </member>
+        <member name="P:YMNNetCoreFrameWork.Host.Auths.YMNPolicy.DeniedAction">
+            <summary>
+            无权限action
+            </summary>
+        </member>
+        <member name="M:YMNNetCoreFrameWork.Host.Auths.YMNPolicy.#ctor">
+            <summary>
+            构造
+            </summary>
+        </member>
+        <member name="T:YMNNetCoreFrameWork.Host.Auths.UserPermission">
+            <summary>
+            用户权限承载实体
+            </summary>
+        </member>
+        <member name="P:YMNNetCoreFrameWork.Host.Auths.UserPermission.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:YMNNetCoreFrameWork.Host.Auths.UserPermission.Url">
+            <summary>
+            请求Url
+            </summary>
+        </member>
+        <member name="M:YMNNetCoreFrameWork.Host.Auths.PolicyHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,YMNNetCoreFrameWork.Host.Auths.YMNPolicy)">
+            <summary>
+            验证策略
+            </summary>
+            <param name="context"></param>
+            <param name="requirement"></param>
+            <returns></returns>
+        </member>
+        <member name="F:YMNNetCoreFrameWork.Host.Const.SecurityKey">
+            <summary>
+            这里为了演示，写死一个密钥。实际生产环境可以从配置文件读取,这个是用网上工具随便生成的一个密钥
+            </summary>
+        </member>
+        <member name="F:YMNNetCoreFrameWork.Host.Const.Domain">
+            <summary>
+            站点地址
+            </summary>
+        </member>
+        <member name="F:YMNNetCoreFrameWork.Host.Const.ValidAudience">
+            <summary>
+            受理人，之所以弄成可变的是为了用接口动态更改这个值以模拟强制Token失效
+            真实业务场景可以在数据库或者redis存一个和用户id相关的值，生成token和验证token的时候获取到持久化的值去校验
+            如果重新登陆，则刷新这个值
+            </summary>
+        </member>
+        <member name="M:YMNNetCoreFrameWork.Host.Controllers.Authentication.AuthenticationController.Register(System.String)">
+            <summary>
+            注册用户
+            </summary>
+            <param name="name">用户名</param>
+            <returns></returns>
+        </member>
+        <member name="M:YMNNetCoreFrameWork.Host.Controllers.Authentication.AuthenticationController.TestAuthentication">
+            <summary>
+            验证权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YMNNetCoreFrameWork.Host.Controllers.Authentication.AuthenticationController.Get(System.String,System.String)">
+            <summary>
+            login
+            </summary>
+            <param name="userName">只能用user或者</param>
+            <param name="pwd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YMNNetCoreFrameWork.Host.Controllers.Authentication.AuthenticationController.Get20(System.String,System.String)">
+            <summary>
+            login
+            </summary>
+            <param name="userName">只能用user或者</param>
+            <param name="pwd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YMNNetCoreFrameWork.Host.Controllers.Authentication.AuthenticationController.CheckAccount(System.String,System.String,System.String@)">
+            <summary>
+            模拟登陆校验，因为是模拟，所以逻辑很‘模拟’
+            </summary>
+            <param name="userName"></param>
+            <param name="pwd"></param>
+            <param name="role"></param>
+            <returns></returns>
+        </member>
+        <member name="M:YMNNetCoreFrameWork.Host.Controllers.Authentication.AuthenticationController.TestLog">
+            <summary>
+            测试日志
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:YMNNetCoreFrameWork.Host.Controllers.TestController.TestException">
+            <summary>
+            测试异常处理总线
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:YMNNetCoreFrameWork.Host.Middles.SimpleStringCipher.InitVectorBytes">
+            <summary>
+            This constant string is used as a "salt" value for the PasswordDeriveBytes function calls.
+            This size of the IV (in bytes) must = (keysize / 8).  Default keysize is 256, so the IV must be
+            32 bytes long.  Using a 16 character string here gives us 32 bytes when converted to a byte array.
+            </summary>
+        </member>
+        <member name="P:YMNNetCoreFrameWork.Host.Middles.SimpleStringCipher.DefaultPassPhrase">
+            <summary>
+            Default password to encrypt/decrypt texts.
+            It's recommented to set to another value for security.
+            Default value: "gsKnGZ041HLL4IM8"
+            </summary>
+        </member>
+        <member name="P:YMNNetCoreFrameWork.Host.Middles.SimpleStringCipher.DefaultInitVectorBytes">
+            <summary>
+            Default value: Encoding.ASCII.GetBytes("jkE49230Tf093b42")
+            </summary>
+        </member>
+        <member name="P:YMNNetCoreFrameWork.Host.Middles.SimpleStringCipher.DefaultSalt">
+            <summary>
+            Default value: Encoding.ASCII.GetBytes("hgt!16kl")
+            </summary>
+        </member>
+        <member name="F:YMNNetCoreFrameWork.Host.Middles.SimpleStringCipher.Keysize">
+            <summary>
+            This constant is used to determine the keysize of the encryption algorithm.
+            </summary>
+        </member>
+        <member name="M:YMNNetCoreFrameWork.Host.Middles.YMNSession.Configure(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            注入session
+            </summary>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="P:YMNNetCoreFrameWork.Host.Middles.YMNSession.UserId">
+             <summary>
+            用户编号 
+             </summary>
+        </member>
+        <member name="P:YMNNetCoreFrameWork.Host.Middles.YMNSession.UserName">
+            <summary>
+            登录名
+            </summary>
+        </member>
+    </members>
+</doc>

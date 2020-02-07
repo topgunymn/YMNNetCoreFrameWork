@@ -4,11 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using YMNNetCoreFrameWork.EntityFrameworkCore;
 
 namespace YMNNetCoreFrameWork.Host.Auths
 {
     public class PolicyHandler : AuthorizationHandler<YMNPolicy>
     {
+        private readonly YMNContext _ymnContext;
+        public PolicyHandler(YMNContext yMNContext) {
+            this._ymnContext = yMNContext;
+
+        }
         /// <summary>
         /// 验证策略
         /// </summary>
@@ -17,6 +23,7 @@ namespace YMNNetCoreFrameWork.Host.Auths
         /// <returns></returns>
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, YMNPolicy requirement)
         {
+            var d =  _ymnContext.YMNPermissions.ToList();
             //赋值用户权限
             var userPermissions = requirement.UserPermissions;
             //从AuthorizationHandlerContext转成HttpContext，以便取出表求信息
@@ -29,6 +36,7 @@ namespace YMNNetCoreFrameWork.Host.Auths
             {
                 if (userPermissions.GroupBy(g => g.Url).Any(w => w.Key.ToUpperInvariant() == questUrl))
                 {
+                  
                     //用户名
                     var userName = httpContext.User.Claims.SingleOrDefault(s => s.Type == ClaimTypes.NameIdentifier).Value;
                     if (userPermissions.Any(w => w.UserName == userName && w.Url.ToUpperInvariant() == questUrl))

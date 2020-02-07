@@ -32,10 +32,10 @@ namespace YMNNetCoreFrameWork.Host.Middles
         /// <summary>
         ///用户编号 
         /// </summary>
-        public static string UserId
+        public static long UserId
         {
-            get => _session == null ? "" : _session.GetString("CurrentUser_UserId");
-            set => _session.SetString("CurrentUser_UserId", value != "" ? value.ToString() : "");
+            get => _session == null ? 0 : Convert.ToInt64( _session.GetString("CurrentUser_UserId"));
+            set => _session.SetString("CurrentUser_UserId", value.ToString() );
         }
 
         /// <summary>

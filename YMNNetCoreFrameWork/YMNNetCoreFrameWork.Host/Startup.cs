@@ -17,6 +17,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NLog.Extensions.Logging;
+using NLog.Web;
 using YMNNetCoreFrameWork.Core.Authoratication;
 using YMNNetCoreFrameWork.EntityFrameworkCore;
 using YMNNetCoreFrameWork.Host.Auths;
@@ -37,6 +39,9 @@ namespace YMNNetCoreFrameWork.Host
         public void ConfigureServices(IServiceCollection services)
         {
 
+
+            services.AddDbContext<YMNContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("YMNContextString")));
             var key = Configuration["Authentication:JwtBearer:SecurityKey"];
             var Issuer = Configuration["Authentication:JwtBearer:Issuer"];
             var Audience = Configuration["Authentication:JwtBearer:Audience"];
@@ -132,25 +137,79 @@ namespace YMNNetCoreFrameWork.Host
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v0.1.0",//版本号
+                    Title = "尹大师框架说明,QQ:1390788386",//文档标题
+                    Description = "框架说明文档",//文档描述
+                    Contact = new OpenApiContact { Name = "道法自然", Email = "1390788386@qq.com"}//联系人
+                });
+                // Assign scope requirements to operations based on AuthorizeAttribute
+                //options.OperationFilter<SecurityRequirementsOperationFilter>();
+                //设置swagger的xml文档
+
+                //c.DocInclusionPredicate((docName, description) => true);
+
+                //// Define the BearerAuth scheme that's in use
+                //c.AddSecurityDefinition("bearerAuth", new ApiKeyScheme()
+                //{
+                //    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                //    Name = "Authorization",
+                //    In = "header",
+                //    Type = "apiKey"
+                //});
+                //// Assign scope requirements to operations based on AuthorizeAttribute
+                //c.OperationFilter<SecurityRequirementsOperationFilter>();
+
+               // c.DocInclusionPredicate((docName, description) => true);
+                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                //{
+                //    Description = "Authorization format : Bearer {token}",
+                //    Name = "Authorization",
+                //    In = "header",
+                //    Type = "apiKey"
+                //});//api界面新增authorize按钮
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "西方输入Token，使用Bearer开头",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    BearerFormat = "JWT",
+                    Scheme = "Bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                 {
+                   {
+                        new OpenApiSecurityScheme
+                        {
+                       Reference = new OpenApiReference {
+                         Type = ReferenceType.SecurityScheme,
+                         Id = "Bearer"
+                     }
+                     },
+            new string[] { }
+                  }
+                  });
+
+
+                string filepath = $"{AppContext.BaseDirectory}YMNNetCoreFrameWork.Host.xml";
+                c.IncludeXmlComments(filepath);
             });
 
             //注入授权Handler
-            services.AddSingleton<IAuthorizationHandler, PolicyHandler>();
-
-            services.AddDbContext<YMNContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("YMNContextString")));
+            services.AddScoped<IAuthorizationHandler, PolicyHandler>();
             services.AddSession();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,ILogger<Startup> logger)
         {
             //异常处理
             app.UseMyExceptionHandler(loggerFactory);
             app.UseAuthentication();
-
+            logger.LogError("启动程序");
             //if (env.IsDevelopment())
             //{
             //    app.UseDeveloperExceptionPage();
@@ -162,6 +221,11 @@ namespace YMNNetCoreFrameWork.Host
             //}
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
+
+            //添加NLog
+            loggerFactory.AddNLog();
+            //读取Nlog配置文件
+            env.ConfigureNLog("NLog.config");
             app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),

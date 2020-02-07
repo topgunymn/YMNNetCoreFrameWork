@@ -8,7 +8,7 @@ using System.Text;
 namespace YMNNetCoreFrameWork.Core.Authoratication
 {
     [Table("Users")]
-   public  class YMNUser: IdentityUser
+   public  class YMNUser: IdentityUser<long>
     {
         public const int MaxUserIdLength = 255;
         public DateTime? CreateTime { get; set; }

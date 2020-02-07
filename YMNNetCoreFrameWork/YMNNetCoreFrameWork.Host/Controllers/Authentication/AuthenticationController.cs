@@ -11,7 +11,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+
 using Microsoft.IdentityModel.Tokens;
+using NLog;
 using YMNNetCoreFrameWork.Core.Authoratication;
 using YMNNetCoreFrameWork.Host.Middles;
 
@@ -31,11 +33,15 @@ namespace YMNNetCoreFrameWork.Host.Controllers.Authentication
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AuthenticationController(UserManager<YMNUser>  userManager,SignInManager<YMNUser> signInManager,IConfiguration configuration,IHttpContextAccessor httpContextAccessor) {
+        private readonly ILogger _logger = NLog.LogManager.GetCurrentClassLogger();
+
+        public AuthenticationController(UserManager<YMNUser>  userManager,SignInManager<YMNUser> signInManager,
+            IConfiguration configuration,IHttpContextAccessor httpContextAccessor) {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._configuration = configuration;
             this._httpContextAccessor = httpContextAccessor;
+   
         }
 
         [HttpGet]
@@ -43,7 +49,11 @@ namespace YMNNetCoreFrameWork.Host.Controllers.Authentication
 
             return true;
         }
-
+        /// <summary>
+        /// 注册用户
+        /// </summary>
+        /// <param name="name">用户名</param>
+        /// <returns></returns>
         [HttpGet("Register")]
         public async Task<object> Register(string name) {
      
@@ -72,9 +82,13 @@ namespace YMNNetCoreFrameWork.Host.Controllers.Authentication
             YMNSession.UserId = user.Id;
             YMNSession.UserName = user.UserName;
             YMNSession.TenantId = user.TenantId;
-            return token;
+            return new { token};
         }
 
+        /// <summary>
+        /// 验证权限
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpGet("TestAuthentication")]       
         public async Task<object> TestAuthentication() {
@@ -84,7 +98,7 @@ namespace YMNNetCoreFrameWork.Host.Controllers.Authentication
         [HttpGet]
         [Route("Get2")]
         [Authorize("YMNPolicy")]
-        public ActionResult<IEnumerable<string>> Get2()
+        public ActionResult<IEnumerable<string>> Get2(string name,string age)
         {
             //这是获取自定义参数的方法
          
@@ -186,7 +200,7 @@ jti (JWT ID)：编号
         [AllowAnonymous]
         [HttpGet]
         [Route("api/auth2")]
-        public IActionResult Get2(string userName, string pwd)
+        public IActionResult Get20(string userName, string pwd)
         {
             if (CheckAccount(userName, pwd, out string role))
             {
@@ -250,5 +264,25 @@ jti (JWT ID)：编号
             return true;
         }
 
+
+        /// <summary>
+        /// 测试日志
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("TestLog")]
+
+        public async  Task<object> TestLog() {
+
+
+            _logger.Error("测试错误");
+            _logger.Debug("测试debug");
+            _logger.Info("测试info");
+            _logger.Warn("测试warn");
+            //_logger.LogError("测试错误");
+            //_logger.LogDebug("测试debug");
+            //_logger.LogInformation("测试info");
+            //_logger.LogWarning("测试warn");
+            return true;
+        }
     }
 }

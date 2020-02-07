@@ -9,7 +9,7 @@ using YMNNetCoreFrameWork.Core.EntityBase;
 namespace YMNNetCoreFrameWork.Core.Authoratication
 {
     [Table("Roles")]
-   public class Role:IdentityRole
+   public class Role:IdentityRole<long>
     {
 
         public const int MaxUserIdLength = 255;

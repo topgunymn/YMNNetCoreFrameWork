@@ -19,7 +19,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,8 +29,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
 
                     b.Property<string>("ClaimValue");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired();
+                    b.Property<long>("RoleId");
 
                     b.HasKey("Id");
 
@@ -39,7 +38,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<long>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,8 +48,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
 
                     b.Property<string>("ClaimValue");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<long>("UserId");
 
                     b.HasKey("Id");
 
@@ -59,7 +57,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<long>", b =>
                 {
                     b.Property<string>("LoginProvider");
 
@@ -67,8 +65,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
 
                     b.Property<string>("ProviderDisplayName");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<long>("UserId");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -77,11 +74,11 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<long>", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<long>("UserId");
 
-                    b.Property<string>("RoleId");
+                    b.Property<long>("RoleId");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -90,9 +87,9 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<long>("UserId");
 
                     b.Property<string>("LoginProvider");
 
@@ -107,8 +104,9 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
 
             modelBuilder.Entity("YMNNetCoreFrameWork.Core.Authoratication.Role", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -148,10 +146,51 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
+            modelBuilder.Entity("YMNNetCoreFrameWork.Core.Authoratication.YMNPermissions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreateTime");
+
+                    b.Property<string>("CreateUserId")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("DeleterUserId")
+                        .HasMaxLength(255);
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("DisplayName")
+                        .HasMaxLength(50);
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<string>("LastModifiterUserId")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50);
+
+                    b.Property<long>("RoleId");
+
+                    b.Property<int>("TenantId");
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("YMNPermissions");
+                });
+
             modelBuilder.Entity("YMNNetCoreFrameWork.Core.Authoratication.YMNUser", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AccessFailedCount");
 
@@ -218,7 +257,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
                 {
                     b.HasOne("YMNNetCoreFrameWork.Core.Authoratication.Role")
                         .WithMany()
@@ -226,7 +265,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<long>", b =>
                 {
                     b.HasOne("YMNNetCoreFrameWork.Core.Authoratication.YMNUser")
                         .WithMany()
@@ -234,7 +273,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<long>", b =>
                 {
                     b.HasOne("YMNNetCoreFrameWork.Core.Authoratication.YMNUser")
                         .WithMany()
@@ -242,7 +281,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<long>", b =>
                 {
                     b.HasOne("YMNNetCoreFrameWork.Core.Authoratication.Role")
                         .WithMany()
@@ -255,7 +294,7 @@ namespace YMNNetCoreFrameWork.EntityFrameworkCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>
                 {
                     b.HasOne("YMNNetCoreFrameWork.Core.Authoratication.YMNUser")
                         .WithMany()
